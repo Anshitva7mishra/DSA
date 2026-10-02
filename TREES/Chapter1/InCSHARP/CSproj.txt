@@ -1,0 +1,28 @@
+# Breakdown of the .csproj file
+
+The .csproj (C# Project) file is an XML document that acts as the blueprint for the .NET compiler. It tells the compiler how to build your code into an executable program.
+
+### In-Depth Breakdown of the XML Elements
+
+<Project Sdk="Microsoft.NET.Sdk">
+* What it is: Defines the "Software Development Kit" (SDK) that the project uses.
+* Deep dive: By specifying Microsoft.NET.Sdk, you are telling the compiler that this is a standard .NET application. This single line implicitly imports hundreds of default build rules, meaning it automatically finds and compiles all .cs files in the folder.
+
+<PropertyGroup>
+* What it is: A container element used to group related properties together. Everything inside this block defines the core configuration settings for your build.
+
+<OutputType>Exe</OutputType>
+* What it is: Stands for "Executable".
+* Deep dive: Tells the compiler that the final result of building this code should be a runnable program (an .exe file). If you were building a library (.dll), this would be set to "Library".
+
+<TargetFramework>net10.0</TargetFramework>
+* What it is: Specifies the version of the .NET framework your code runs on.
+* Deep dive: Ensures that the compiler uses the .NET 10 version.
+
+<ImplicitUsings>disable</ImplicitUsings>
+* What it is: Controls whether C# automatically includes common 'using' statements (like using System;) behind the scenes.
+* Deep dive: Because you explicitly wrote 'using System;' at the top of your files, this is disabled to prevent the compiler from getting confused or throwing duplicate warnings.
+
+<Nullable>disable</Nullable>
+* What it is: Controls C#'s strict "Nullable Reference Types" feature.
+* Deep dive: If enabled, the C# compiler strictly checks if variables could accidentally be null and throws warnings if you don't handle them safely. It is disabled here so the compiler doesn't complain about assignments like 'TreeNode.Left = null'.
